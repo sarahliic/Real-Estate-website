@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function DetailProperty() {
   const [propertyDetails, setPropertyDetails] = useState([]);
@@ -100,16 +100,18 @@ function DetailProperty() {
                 <p className="leading-relaxed">
                   يُعرض هنا معلومات شاملة حول هذا العقار المحدد. يتميز العقار
                   بموقعه المميز والتصميم الفريد، مما يجعله فرصة استثمارية رائعة
-                  أو خيارًا مثاليًا للسكن.
+                  و خيارًا مثاليًا للسكن.
                 </p>
                 <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5"></div>
                 <div className="flex">
                   <span className="title-font font-medium text-2xl text-gray-900">
                     ريال {propertyDetails.price}
                   </span>
-                  <button className="flex ml-auto bg-[#FFC72C] border py-2 px-6 border-[#FFC72C] text-white hover:bg-[#ffc72eec] rounded">
-                    تعديل
-                  </button>
+                  <Link to={`/EditForm/${propertyDetails.id}`}>
+                    <button className="flex ml-20 bg-[#FFC72C] border py-2 px-6 border-[#FFC72C] text-white hover:bg-[#ffc72eec] rounded">
+                      تعديل
+                    </button>
+                  </Link>
                   <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
                     حذف
                   </button>

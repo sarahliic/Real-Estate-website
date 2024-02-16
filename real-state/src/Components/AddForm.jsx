@@ -54,8 +54,17 @@ function AddForm() {
   return (
     <>
       <main className="min-h-screen">
-        <section className="">
-          <div className="hero min-h-screen bg-base-200">
+        <section className="bg-base-200">
+          <div className="flex flex-col justify-end items-center">
+            <h2 class="font-semibold text-xl text-gray-600 text-right">
+              نموذج إضافة عقار جديد
+            </h2>
+            <p class="text-gray-500 mb-6 text-right">
+              أهلا بك في موقعنا سعيدين بخدمتك
+            </p>
+          </div>
+
+          <div className="hero min-h-screen ">
             <div className="hero-content flex-col max-sm:p-0 lg:flex-row lg:w-[70%] md:flex-row md:w-[70%]  ">
               <img
                 src="https://images.pexels.com/photos/1481105/pexels-photo-1481105.jpeg?auto=compress&cs=tinysrgb"
