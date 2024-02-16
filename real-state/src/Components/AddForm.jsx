@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import ListContext from "../ListContext";
 
 function AddForm() {
   const [addForm, setAddForm] = useState({
@@ -7,6 +8,7 @@ function AddForm() {
     price: "",
     images: [],
   });
+  const [listProperties, setListProperties] = useContext(ListContext);
 
   const handleFormChange = (e) => {
     setAddForm({
@@ -28,7 +30,7 @@ function AddForm() {
     );
     const response = await api.json();
     console.log(response);
-    setAddForm(response);
+    setAddForm([...listProperties, response]);
   };
 
   // handle data after submiting submit
@@ -126,13 +128,13 @@ function AddForm() {
                     صور العقار
                   </label>
                   <input
-                    type="file"
+                    type="text"
                     name="images"
                     id="images"
                     value={addForm.images}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-right"
                     required
-                    placeholder=" اضف صور"
+                    placeholder=" رابط الصورة"
                     onChange={handleFormChange}
                   />
                 </div>
