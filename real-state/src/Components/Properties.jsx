@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import ListContext from "../ListContext";
+import { Link } from "react-router-dom";
 
 function Properties() {
   const [listProperties, setListProperties] = useContext(ListContext);
@@ -16,13 +17,11 @@ function Properties() {
     );
     const data = await api.json();
     setListProperties(data);
-    // window.location.reload(false);
-    console.log(data);
   };
   return (
     <>
       <main>
-        <section>
+        <section className="grid grid-cols-3 gap-4 p-28 border border-black items-center">
           {listProperties.map((property) => {
             return (
               <>
@@ -48,9 +47,12 @@ function Properties() {
                       {property.price} ريال
                     </p>
                     <div className="flex justify-end w-full">
-                      <button className="btn bg-[#FFC72C] border border-[#FFC72C] text-white hover:bg-[#ffc72e]">
-                        تفاصيل العقار{" "}
-                      </button>
+                      <Link to={`DetailProperty/${property.id}`}>
+                        {" "}
+                        <button className="btn bg-[#FFC72C] border border-[#FFC72C] text-white hover:bg-[#ffc72e]">
+                          تفاصيل العقار{" "}
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

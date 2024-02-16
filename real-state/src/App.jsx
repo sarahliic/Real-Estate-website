@@ -4,6 +4,7 @@ import "./App.css";
 import Home from "./Pages/Home";
 import AddForm from "./Components/AddForm";
 import EditForm from "./Components/EditForm";
+import DetailProperty from "./Components/DetailProperty";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/AddForm" element={<AddForm />} />
         <Route path="/EditForm" element={<EditForm />} />
+        <Route path="/DetailProperty/:id" element={<DetailProperty />} />
       </Routes>
     </>
   );
