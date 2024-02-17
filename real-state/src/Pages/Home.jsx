@@ -1,10 +1,13 @@
 import React from "react";
-import Properties from "../Components/Properties";
 import { Link } from "react-router-dom";
+//import components
+import Properties from "../Components/Properties";
+import NavBar from "../Components/NavBar";
 
 function Home() {
   return (
     <>
+      <NavBar></NavBar>
       <main className="min-h-screen">
         <section>
           <div className="hero min-h-[80vh] bg-[url('https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb')] relative">
@@ -19,7 +22,7 @@ function Home() {
                     وتحقيق أهدافهم في الملكية العقارية.
                   </p>
                   <Link to={"/AddForm"}>
-                    <button className="btn bg-[#FFC72C] border border-[#FFC72C] text-white hover:bg-[#ffc72e]">
+                    <button className="btn bg-[#007882] border border-[#007882] text-white hover:bg-[#ffff] hover:text-[#007882]">
                       أضف عقارًا
                     </button>
                   </Link>
@@ -29,6 +32,7 @@ function Home() {
           </div>
         </section>
         <section>
+          <h1 id="listing-proerties">قائمة العقارات</h1>
           <Properties />
         </section>
       </main>

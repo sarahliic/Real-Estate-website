@@ -150,7 +150,7 @@ function AddForm() {
 
                 <button
                   type="submit"
-                  className="btn bg-[#FFC72C] border border-[#FFC72C] text-white hover:bg-[#ffc72e] w-full"
+                  className="btn  bg-[#007882] border border-[#007882] text-white hover:bg-[#ffff] hover:text-[#007882] w-full"
                 >
                   اضافة
                 </button>

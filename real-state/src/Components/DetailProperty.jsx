@@ -142,7 +142,7 @@ function DetailProperty() {
                     ريال {propertyDetails.price}
                   </span>
                   <Link to={`/EditForm/${propertyDetails.id}`}>
-                    <button className="flex ml-20 bg-[#FFC72C] border py-2 px-6 border-[#FFC72C] text-white hover:bg-[#ffc72eec] rounded">
+                    <button className="flex ml-20  bg-[#007882] border border-[#007882] text-white hover:bg-[#ffff] hover:text-[#007882] rounded">
                       تعديل
                     </button>
                   </Link>

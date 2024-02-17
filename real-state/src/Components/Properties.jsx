@@ -21,7 +21,7 @@ function Properties() {
   return (
     <>
       <main>
-        <section className="grid grid-cols-3 gap-4 p-28 border border-black items-center">
+        <section className="grid grid-cols-3 items-center gap-4 p-28 max-md:grid max-md:grid-cols-2 max-sm:grid max-sm:grid-cols-1 max-sm:w-full ">
           {listProperties.map((property) => {
             return (
               <>
@@ -49,7 +49,7 @@ function Properties() {
                     <div className="flex justify-end w-full">
                       <Link to={`DetailProperty/${property.id}`}>
                         {" "}
-                        <button className="btn bg-[#FFC72C] border border-[#FFC72C] text-white hover:bg-[#ffc72e]">
+                        <button className="btn bg-[#007882] border border-[#007882] text-white hover:bg-[#ffff] hover:text-[#007882]">
                           تفاصيل العقار{" "}
                         </button>
                       </Link>
