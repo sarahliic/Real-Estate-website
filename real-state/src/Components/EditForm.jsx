@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
-import ListContext from "../ListContext";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Footer from "./Footer";
+import NavBar from "./NavBar";
 
 function EditForm() {
   const [editValue, setEditValue] = useState({
@@ -9,10 +10,8 @@ function EditForm() {
     price: "",
     images: [],
   });
-  const [formData, setFormData] = useState([]);
+  let navigate = useNavigate();
   let { id } = useParams();
-
-  // const [listProperties, setListProperties] = useContext(ListContext);
 
   // render api
   useEffect(() => {
@@ -42,7 +41,6 @@ function EditForm() {
     );
     const data = await api.json();
     setEditValue(data);
-    console.log(data);
   };
 
   // handle inputs state
@@ -53,17 +51,25 @@ function EditForm() {
     });
   };
 
-  // handle data after submiting submit
+  // handle data after submiting
   const handleSubmit = (e) => {
     e.preventDefault();
     editPropertyData();
-    console.log("edit work");
+    alert("ملاحظة: تم تحديث المعلومات");
+    navigate("/");
   };
   return (
     <>
+      <NavBar />
       <main className="min-h-screen">
-        <section className="">
-          <div className="hero min-h-screen bg-base-200">
+        <section className=" bg-base-200">
+          <div className="flex flex-col justify-end items-end mr-24 pt-12 max-sm:pt-1 max-sm:flex max-sm:justify-center">
+            <h2 className="font-semibold text-3xl w-full  text-[#073D5C] text-right max-sm:text-2xl max-sm:mb-5 max-sm:text-right">
+              نموذج تعديل معلومات العقار{" "}
+              <span className="text-black">{editValue.names}</span>
+            </h2>
+          </div>
+          <div className="hero min-h-screen">
             <div className="hero-content flex-col max-sm:p-0 lg:flex-row lg:w-[70%] md:flex-row md:w-[70%]  ">
               <img
                 src={editValue.images}
@@ -77,7 +83,7 @@ function EditForm() {
                 <div className="mb-5">
                   <label
                     htmlFor="names"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-sm font-bold text-gray-900 dark:text-white"
                   >
                     اسم العقار
                   </label>
@@ -95,7 +101,7 @@ function EditForm() {
                 <div className="mb-5">
                   <label
                     htmlFor="title"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-sm font-bold text-gray-900 dark:text-white"
                   >
                     العنوان
                   </label>
@@ -113,7 +119,7 @@ function EditForm() {
                 <div className="mb-5">
                   <label
                     htmlFor="price"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-sm font-bold text-gray-900 dark:text-white"
                   >
                     سعر العقار
                   </label>
@@ -131,7 +137,7 @@ function EditForm() {
                 <div className="mb-5">
                   <label
                     htmlFor="images"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-sm font-bold text-gray-900 dark:text-white"
                   >
                     صور العقار
                   </label>
@@ -149,7 +155,7 @@ function EditForm() {
 
                 <button
                   type="submit"
-                  className="btn  bg-[#007882] border border-[#007882] text-white hover:bg-[#ffff] hover:text-[#007882] w-full"
+                  className="btn  bg-[#073D5C] border border-[#073D5C] text-white hover:bg-[#ffff] hover:text-[#073D5C] w-full"
                 >
                   حفظ التغييرات
                 </button>
@@ -158,6 +164,7 @@ function EditForm() {
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 }

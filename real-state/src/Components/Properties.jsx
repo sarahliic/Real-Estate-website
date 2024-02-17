@@ -21,12 +21,12 @@ function Properties() {
   return (
     <>
       <main>
-        <section className="grid grid-cols-3 items-center gap-4 p-28 max-md:grid max-md:grid-cols-2 max-sm:grid max-sm:grid-cols-1 max-sm:w-full ">
+        <section className="grid grid-cols-3 items-center gap-4 p-28   max-md:p-14 max-md:grid max-md:grid-cols-2 max-sm:grid max-sm:grid-cols-1 max-sm:p-10  max-sm:w-full ">
           {listProperties.map((property) => {
             return (
               <>
                 <div
-                  className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+                  className="max-w-sm bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700"
                   key={property.id}
                 >
                   <img
@@ -49,7 +49,7 @@ function Properties() {
                     <div className="flex justify-end w-full">
                       <Link to={`DetailProperty/${property.id}`}>
                         {" "}
-                        <button className="btn bg-[#007882] border border-[#007882] text-white hover:bg-[#ffff] hover:text-[#007882]">
+                        <button className="btn bg-[#073D5C] border border-[#073D5C] text-white hover:bg-[#ffff] hover:text-[#073D5C]">
                           تفاصيل العقار{" "}
                         </button>
                       </Link>

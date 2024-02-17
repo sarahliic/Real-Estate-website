@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-
+import { Link, useNavigate, useParams } from "react-router-dom";
+import NavBar from "./NavBar";
+import Footer from "./Footer";
+useNavigate;
 function DetailProperty() {
   const [propertyDetails, setPropertyDetails] = useState([]);
   const [showModal, setShowModal] = useState(false);
   let { id } = useParams();
-
+  const navigate = useNavigate();
   // Render api
   useEffect(() => {
     getPropertyDetails(id);
@@ -32,9 +34,7 @@ function DetailProperty() {
         }
       );
 
-      // Check if the delete operation was successful
       if (api.ok) {
-        // Perform any additional actions or update the UI as needed
         console.log("Property deleted successfully");
       } else {
         console.log("Failed to delete property");
@@ -50,14 +50,22 @@ function DetailProperty() {
 
   const handelDeleteProperty = () => {
     deleteProperty();
+    navigate("/");
+    alert("تم الحذف");
     setShowModal(false);
   };
 
   return (
     <>
-      <main>
-        <section className="text-gray-700 body-font overflow-hidden p-20 bg-white">
-          <div className="container px-5 py-24 mx-auto">
+      <NavBar />
+      <main className="min-h-screen">
+        <section className="text-gray-700 body-font overflow-hidden p-20 max-sm:p-6 bg-[#073d5c56]">
+          <div className="container px-5 py-24 mx-auto  rounded-md  bg-base-200">
+            <div className="flex flex-col justify-end items-end mr-24 pt-12 max-sm:pt-1 max-sm:flex max-sm:justify-center">
+              <h2 className="font-semibold text-3xl w-full  text-[#073D5C] text-right max-sm:text-2xl max-sm:mb-5 max-sm:text-right">
+                تفاصيل حول العقار
+              </h2>
+            </div>
             <div className="lg:w-4/5 mx-auto flex flex-wrap text-right">
               <img
                 alt="real estate homes details in ksa"
@@ -142,7 +150,7 @@ function DetailProperty() {
                     ريال {propertyDetails.price}
                   </span>
                   <Link to={`/EditForm/${propertyDetails.id}`}>
-                    <button className="flex ml-20  bg-[#007882] border border-[#007882] text-white hover:bg-[#ffff] hover:text-[#007882] rounded">
+                    <button className="flex ml-[3rem] py-2 px-6 bg-[#073D5C] border border-[#073D5C] text-white hover:bg-[#ffff] hover:text-[#073D5C] rounded max-sm:ml-3">
                       تعديل
                     </button>
                   </Link>
@@ -150,7 +158,7 @@ function DetailProperty() {
                     onClick={() => {
                       setShowModal(!showModal);
                     }}
-                    className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
+                    className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded max-sm:ml-1 h-max"
                   >
                     حذف
                   </button>
@@ -164,36 +172,36 @@ function DetailProperty() {
           <>
             <section>
               <div
-                class="relative z-10"
+                className="relative z-10"
                 aria-labelledby="modal-title"
                 role="dialog"
                 aria-modal="true"
               >
-                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+                <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
-                <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-                  <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                    <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                      <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                        <div class="sm:flex sm:items-start ">
-                          <div class="mt-3 text-right sm:ml-4 sm:mt-0 sm:text-left">
+                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                  <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                    <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                      <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                        <div className="sm:flex sm:items-start ">
+                          <div className="mt-3 text-right sm:ml-4 sm:mt-0 sm:text-left">
                             <h3
-                              class="text-base text-right font-semibold leading-6 text-gray-900"
+                              className="text-base text-right font-semibold leading-6 text-gray-900"
                               id="modal-title"
                             >
                               حذف عقار
                             </h3>
-                            <div class="mt-2">
-                              <p class="text-sm text-gray-500 text-right">
+                            <div className="mt-2">
+                              <p className="text-sm text-gray-500 text-right">
                                 هل أنت متأكد أنك ترغب في حذف ؟ سيتم حذف جميع
                                 البيانات المتعلقة بهذا العقار بشكل دائم. لا يمكن
                                 التراجع عن هذا الإجراء.
                               </p>
                             </div>
                           </div>
-                          <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10 ">
+                          <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10 ">
                             <svg
-                              class="h-6 w-6 text-red-600"
+                              className="h-6 w-6 text-red-600"
                               fill="none"
                               viewBox="0 0 24 24"
                               stroke-width="1.5"
@@ -209,18 +217,18 @@ function DetailProperty() {
                           </div>
                         </div>
                       </div>
-                      <div class="bg-gray-50  justify-start px-4 py-3 sm:justify-start sm:px-6">
+                      <div className="bg-gray-50  justify-start px-4 py-3 sm:justify-start sm:px-6">
                         <button
                           onClick={handleCancelClick}
                           type="button"
-                          class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                          className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
                         >
                           إلغاء
                         </button>
                         <button
                           onClick={handelDeleteProperty}
                           type="button"
-                          class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                          className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
                         >
                           أجل، أنا متأكد
                         </button>
@@ -233,6 +241,7 @@ function DetailProperty() {
           </>
         )}
       </main>
+      <Footer />
     </>
   );
 }

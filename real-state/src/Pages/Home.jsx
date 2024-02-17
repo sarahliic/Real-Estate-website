@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 //import components
 import Properties from "../Components/Properties";
 import NavBar from "../Components/NavBar";
+import Footer from "../Components/Footer";
 
 function Home() {
   return (
@@ -10,8 +11,8 @@ function Home() {
       <NavBar></NavBar>
       <main className="min-h-screen">
         <section>
-          <div className="hero min-h-[80vh] bg-[url('https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb')] relative">
-            <div className="absolute bg-[rgba(0,0,0,0.6)] w-full h-full flex justify-center items-center ">
+          <div className="hero min-h-[80vh] bg-[url('https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb')] relative">
+            <div className="absolute bg-[rgba(0,0,0,0.7)] w-full h-full flex justify-center items-center ">
               <div className="hero-content text-center">
                 <div className="max-w-md">
                   <h1 className="text-5xl font-bold text-white">مرحبًا بك</h1>
@@ -22,8 +23,8 @@ function Home() {
                     وتحقيق أهدافهم في الملكية العقارية.
                   </p>
                   <Link to={"/AddForm"}>
-                    <button className="btn bg-[#007882] border border-[#007882] text-white hover:bg-[#ffff] hover:text-[#007882]">
-                      أضف عقارًا
+                    <button className="btn bg-[#073D5C] border border-[#073D5C] text-white hover:bg-[#ffff] hover:text-[#073D5C]">
+                      إضافة عقار
                     </button>
                   </Link>
                 </div>
@@ -31,11 +32,19 @@ function Home() {
             </div>
           </div>
         </section>
-        <section>
-          <h1 id="listing-proerties">قائمة العقارات</h1>
+        <section className="bg-[#f3f3f3]">
+          <div className="flex justify-center items-center pt-16">
+            <h1
+              id="Listing-properties"
+              className="font-bold font-mono text-4xl "
+            >
+              قائمة العقارات
+            </h1>
+          </div>
           <Properties />
         </section>
       </main>
+      <Footer />
     </>
   );
 }

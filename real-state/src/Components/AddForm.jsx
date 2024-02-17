@@ -1,5 +1,9 @@
 import React, { useContext, useState } from "react";
 import ListContext from "../ListContext";
+import Footer from "./Footer";
+import Logo from "../assets/real-estate-logo.png";
+import { Link } from "react-router-dom";
+import NavBar from "./NavBar";
 
 function AddForm() {
   const [addForm, setAddForm] = useState({
@@ -8,6 +12,7 @@ function AddForm() {
     price: "",
     images: [],
   });
+
   const [listProperties, setListProperties] = useContext(ListContext);
 
   const handleFormChange = (e) => {
@@ -33,7 +38,7 @@ function AddForm() {
     setAddForm([...listProperties, response]);
   };
 
-  // handle data after submiting submit
+  // handle data after submiting
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -46,29 +51,32 @@ function AddForm() {
           images: [],
         });
         console.log("Successfully added to the API");
+        alert("تم الإضاقة بنجاح!");
       })
       .catch((error) => {
         console.error("Failed to add to the API:", error);
       });
   };
+
   return (
     <>
+      <NavBar />
       <main className="min-h-screen">
-        <section className="bg-base-200">
-          <div className="flex flex-col justify-end items-center">
-            <h2 class="font-semibold text-xl text-gray-600 text-right">
+        <section className="bg-base-200 relative">
+          <div className="flex flex-col justify-end items-end mr-24 pt-12 max-sm:mb-5">
+            <h2 className="font-semibold text-3xl  text-[#073D5C] text-right max-sm:text-xl max-sm:mt-10">
               نموذج إضافة عقار جديد
             </h2>
-            <p class="text-gray-500 mb-6 text-right">
-              أهلا بك في موقعنا سعيدين بخدمتك
+            <p className="text-[#073D5C]  mt-6  text-right max-sm:mt-2">
+              👋 أهلا بك في موقعنا سعيديبن بخدمتك
             </p>
           </div>
 
           <div className="hero min-h-screen ">
             <div className="hero-content flex-col max-sm:p-0 lg:flex-row lg:w-[70%] md:flex-row md:w-[70%]  ">
               <img
-                src="https://images.pexels.com/photos/1481105/pexels-photo-1481105.jpeg?auto=compress&cs=tinysrgb"
-                className="max-w-sm rounded-lg shadow-2xl"
+                src="https://img.freepik.com/free-photo/door-opening-revealing-beautiful-city_23-2149768547.jpg?size=626&ext=jpg&ga=GA1.2.1024149589.1703589823&semt=ais"
+                className="max-w-sm rounded-lg shadow-2xl mt-8 "
               />
 
               <form
@@ -78,17 +86,17 @@ function AddForm() {
                 <div className="mb-5">
                   <label
                     htmlFor="names"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-sm font-bold text-gray-900 dark:text-white"
                   >
-                    اسم العقار
+                    نوع العقار
                   </label>
                   <input
                     type="text"
                     id="names"
                     name="names"
                     value={addForm.names}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-right"
-                    placeholder="اسم العقار"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-right"
+                    placeholder=" فيلا، شقة، مكتب تجاري .."
                     required
                     onChange={handleFormChange}
                   />
@@ -96,7 +104,7 @@ function AddForm() {
                 <div className="mb-5">
                   <label
                     htmlFor="title"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-sm font-bold text-gray-900 dark:text-white"
                   >
                     العنوان
                   </label>
@@ -114,7 +122,7 @@ function AddForm() {
                 <div className="mb-5">
                   <label
                     htmlFor="price"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-sm font-bold text-gray-900 dark:text-white"
                   >
                     سعر العقار
                   </label>
@@ -132,7 +140,7 @@ function AddForm() {
                 <div className="mb-5">
                   <label
                     htmlFor="images"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-sm font-bold text-gray-900 dark:text-white"
                   >
                     صور العقار
                   </label>
@@ -143,14 +151,14 @@ function AddForm() {
                     value={addForm.images}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-right"
                     required
-                    placeholder=" رابط الصورة"
+                    placeholder="  url رابط الصورة"
                     onChange={handleFormChange}
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="btn  bg-[#007882] border border-[#007882] text-white hover:bg-[#ffff] hover:text-[#007882] w-full"
+                  className="btn  bg-[#073D5C] border border-[#073D5C] text-white hover:bg-[#ffff] hover:text-[#073D5C] w-full max-sm:mb-5"
                 >
                   اضافة
                 </button>
@@ -159,6 +167,7 @@ function AddForm() {
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 }
